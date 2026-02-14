@@ -86,7 +86,7 @@ export function Hero() {
         style={{ opacity: particleOpacity }}
       >
         <Antigravity
-          count={200}
+          count={300}
           magnetRadius={8}
           ringRadius={7}
           waveSpeed={0.3}
@@ -109,7 +109,7 @@ export function Hero() {
 
       {/* ── Layer 3: Content ──────────────────────────────────── */}
       <motion.div
-        className="relative z-10 flex flex-1 flex-col items-center justify-center px-6"
+        className="pointer-events-none relative z-10 flex flex-1 flex-col items-center justify-center px-6"
         style={{ opacity: contentOpacity, y: contentY }}
       >
         {/* Label */}
@@ -149,7 +149,7 @@ export function Hero() {
 
         {/* CTAs */}
         <motion.div
-          className="mt-8 flex flex-col items-center gap-4 sm:flex-row md:mt-10"
+          className="pointer-events-auto mt-8 flex flex-col items-center gap-4 sm:flex-row md:mt-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.9, duration: 0.6, ease: "easeOut" }}
@@ -178,7 +178,7 @@ export function Hero() {
 
       {/* ── Layer 4: Bottom image strip (desktop) ─────────────── */}
       <motion.div
-        className="relative z-10 hidden pb-16 lg:block"
+        className="pointer-events-none relative z-10 hidden pb-16 lg:block"
         style={{ y: imageStripY }}
       >
         <motion.div

@@ -98,7 +98,7 @@ export function CTAStrip() {
                 </a>
               </MagneticButton>
 
-              <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-wider text-white/30">
+              <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-wider text-white/60">
                 Available Sun–Thu &middot; 8AM–5PM (AST)
               </p>
             </motion.div>
@@ -113,7 +113,7 @@ export function CTAStrip() {
                 key={img}
                 className="relative h-24 flex-1 overflow-hidden opacity-30 lg:h-32"
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 0.3, y: 0 }}
+                whileInView={{ opacity: 0.6, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
               >

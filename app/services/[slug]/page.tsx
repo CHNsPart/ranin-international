@@ -8,7 +8,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SectionLabel } from "@/components/shared/section-label";
 import { services, getServiceBySlug } from "@/lib/data/services";
-import { Certifications } from "@/components/sections/certifications";
+import { CTAStrip } from "@/components/sections/cta-strip";
 
 export default function ServiceDetailPage() {
   const params = useParams();
@@ -235,7 +235,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* ── Certifications CTA ─────────────────────────────── */}
-      <Certifications />
+      <CTAStrip/>
     </main>
   );
 }
