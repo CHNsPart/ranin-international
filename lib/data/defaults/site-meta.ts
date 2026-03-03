@@ -8,3 +8,8 @@ export const defaultSiteMeta: SiteMetaData = {
   description:
     "Industrial & Construction Solutions Delivered with Excellence",
 };
+
+export const defaultSiteMetaAr: SiteMetaData = {
+  title: "Ranin International",
+  description: "حلول صناعية وإنشائية تُنجز بتميز",
+};

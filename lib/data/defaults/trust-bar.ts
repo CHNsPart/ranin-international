@@ -15,3 +15,11 @@ export const defaultTrustBar: TrustBarData = {
     { value: 6, suffix: "", label: "Core Services" },
   ],
 };
+
+export const defaultTrustBarAr: TrustBarData = {
+  metrics: [
+    { value: 15, suffix: "+", label: "سنة خبرة" },
+    { value: 500, suffix: "+", label: "مشروع منجز" },
+    { value: 6, suffix: "", label: "خدمات أساسية" },
+  ],
+};

@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { projects as defaultProjects } from "@/lib/data/projects";
 
@@ -13,6 +14,7 @@ interface ProjectsMegaMenuProps {
 }
 
 export function ProjectsMegaMenu({ onMouseEnter, onMouseLeave, projects }: ProjectsMegaMenuProps) {
+  const t = useTranslations();
   const items = projects ?? defaultProjects.map((p) => ({
     slug: p.slug,
     title: p.title,
@@ -44,13 +46,13 @@ export function ProjectsMegaMenu({ onMouseEnter, onMouseLeave, projects }: Proje
           {/* Header row */}
           <div className="mb-4 flex items-center justify-between">
             <p className="text-[11px] font-medium uppercase tracking-widest text-white/30">
-              Our Projects
+              {t("common.ourProjects")}
             </p>
             <Link
               href="/projects"
               className="group flex items-center gap-1.5 text-[12px] font-medium text-ranin-accent transition-colors hover:text-white"
             >
-              View All
+              {t("cta.viewAll")}
               <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>

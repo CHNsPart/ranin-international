@@ -205,3 +205,30 @@
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-6px); }
 }
+
+/* ── RTL Support ─────────────────────────────────────────── */
+
+/* Arabic font override — one rule covers all display & sans usages */
+[dir="rtl"] {
+  --font-display: var(--font-arabic-display);
+  --font-sans: var(--font-arabic-display);
+}
+
+/* Flip directional arrows in RTL (not chevrons — they're used for positional nav) */
+[dir="rtl"] svg.lucide-arrow-right,
+[dir="rtl"] svg.lucide-arrow-left {
+  transform: scaleX(-1);
+}
+
+/* RTL shimmer direction */
+[dir="rtl"] .cta-shimmer::before {
+  animation-direction: reverse;
+}
+
+/* RTL nav-link underline reveal direction */
+[dir="rtl"] .nav-link::after {
+  clip-path: inset(0 0 0 100%);
+}
+[dir="rtl"] .nav-link:hover::after {
+  clip-path: inset(0 0 0 0);
+}

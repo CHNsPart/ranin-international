@@ -55,3 +55,47 @@ export const defaultSectors: SectorsData = {
     },
   ],
 };
+
+export const defaultSectorsAr: SectorsData = {
+  sectionLabel: "القطاعات",
+  heading: "القطاعات التي نخدمها",
+  description:
+    "موثوقون في أهم القطاعات الحيوية في المملكة العربية السعودية — نقدم خدمات متخصصة حيث تكون الدقة والموثوقية في غاية الأهمية.",
+  sectors: [
+    {
+      iconName: "Droplets",
+      title: "النفط والغاز",
+      description:
+        "دعم عمليات المنبع والمنتصف والمصب — من عمليات الحفر إلى أعمال صيانة المصافي.",
+      image: "/images/14.png",
+    },
+    {
+      iconName: "FlaskConical",
+      title: "البتروكيماويات",
+      description:
+        "قوى عاملة متخصصة ومواد لمجمعات البتروكيماويات ومعالجة الكيماويات ومصانع البوليمرات.",
+      image: "/images/41.png",
+    },
+    {
+      iconName: "Zap",
+      title: "الطاقة والمرافق",
+      description:
+        "دعم مشاريع توليد الطاقة والنقل ومعالجة المياه والبنية التحتية للمرافق.",
+      image: "/images/54.png",
+    },
+    {
+      iconName: "Building2",
+      title: "البناء والمقاولات",
+      description:
+        "دعم شامل لمشاريع الهندسة والمشتريات والبناء في جميع أنحاء المملكة.",
+      image: "/images/28.png",
+    },
+    {
+      iconName: "Landmark",
+      title: "البنية التحتية",
+      description:
+        "الطرق والجسور والسكك الحديدية والمطارات والمشاريع الكبرى التي تقود تحول المملكة العربية السعودية.",
+      image: "/images/30.png",
+    },
+  ],
+};

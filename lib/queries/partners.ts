@@ -9,7 +9,11 @@ export interface PartnerRow {
   sortOrder: number;
 }
 
-export async function getPartners(): Promise<{ row1: PartnerRow[]; row2: PartnerRow[] }> {
+function ar(arVal: string, enVal: string): string {
+  return arVal && arVal.trim() ? arVal : enVal;
+}
+
+export async function getPartners(locale = "en"): Promise<{ row1: PartnerRow[]; row2: PartnerRow[] }> {
   try {
     const dbPartners = await prisma.partner.findMany({
       orderBy: { sortOrder: "asc" },
@@ -34,9 +38,19 @@ export async function getPartners(): Promise<{ row1: PartnerRow[]; row2: Partner
       };
     }
 
+    const isAr = locale === "ar";
+
+    const mapped = dbPartners.map((p) => ({
+      id: p.id,
+      name: isAr ? ar(p.nameAr, p.name) : p.name,
+      logoUrl: p.logoUrl,
+      row: p.row,
+      sortOrder: p.sortOrder,
+    }));
+
     return {
-      row1: dbPartners.filter((p) => p.row === 1),
-      row2: dbPartners.filter((p) => p.row === 2),
+      row1: mapped.filter((p) => p.row === 1),
+      row2: mapped.filter((p) => p.row === 2),
     };
   } catch {
     return {

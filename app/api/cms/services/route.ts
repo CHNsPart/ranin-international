@@ -26,28 +26,46 @@ export async function POST(request: Request) {
     data: {
       slug: body.slug,
       title: body.title,
+      titleAr: body.titleAr ?? "",
       shortTitle: body.shortTitle,
+      shortTitleAr: body.shortTitleAr ?? "",
       description: body.description,
+      descriptionAr: body.descriptionAr ?? "",
       longDescription: body.longDescription,
+      longDescriptionAr: body.longDescriptionAr ?? "",
       iconName: body.iconName ?? "Package",
       heroImage: body.heroImage ?? "",
       sortOrder: body.sortOrder ?? 0,
       features: {
-        create: (body.features ?? []).map((text: string, i: number) => ({
-          text,
-          sortOrder: i,
-        })),
+        create: (body.features ?? []).map(
+          (f: { text: string; textAr?: string }, i: number) => ({
+            text: typeof f === "string" ? f : f.text,
+            textAr: typeof f === "string" ? "" : f.textAr ?? "",
+            sortOrder: i,
+          })
+        ),
       },
       featureGroups: {
         create: (body.featureGroups ?? []).map(
-          (g: { title: string; details: string[] }, i: number) => ({
+          (
+            g: {
+              title: string;
+              titleAr?: string;
+              details: { text: string; textAr?: string }[];
+            },
+            i: number
+          ) => ({
             title: g.title,
+            titleAr: g.titleAr ?? "",
             sortOrder: i,
             details: {
-              create: (g.details ?? []).map((text: string, j: number) => ({
-                text,
-                sortOrder: j,
-              })),
+              create: (g.details ?? []).map(
+                (d: { text: string; textAr?: string }, j: number) => ({
+                  text: typeof d === "string" ? d : d.text,
+                  textAr: typeof d === "string" ? "" : d.textAr ?? "",
+                  sortOrder: j,
+                })
+              ),
             },
           })
         ),
@@ -94,21 +112,35 @@ export async function PUT(request: Request) {
     data: {
       ...data,
       features: {
-        create: (features ?? []).map((text: string, i: number) => ({
-          text,
-          sortOrder: i,
-        })),
+        create: (features ?? []).map(
+          (f: { text: string; textAr?: string }, i: number) => ({
+            text: typeof f === "string" ? f : f.text,
+            textAr: typeof f === "string" ? "" : f.textAr ?? "",
+            sortOrder: i,
+          })
+        ),
       },
       featureGroups: {
         create: (featureGroups ?? []).map(
-          (g: { title: string; details: string[] }, i: number) => ({
+          (
+            g: {
+              title: string;
+              titleAr?: string;
+              details: { text: string; textAr?: string }[];
+            },
+            i: number
+          ) => ({
             title: g.title,
+            titleAr: g.titleAr ?? "",
             sortOrder: i,
             details: {
-              create: (g.details ?? []).map((text: string, j: number) => ({
-                text,
-                sortOrder: j,
-              })),
+              create: (g.details ?? []).map(
+                (d: { text: string; textAr?: string }, j: number) => ({
+                  text: typeof d === "string" ? d : d.text,
+                  textAr: typeof d === "string" ? "" : d.textAr ?? "",
+                  sortOrder: j,
+                })
+              ),
             },
           })
         ),

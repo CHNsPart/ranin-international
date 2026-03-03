@@ -23,7 +23,7 @@ export function TrustBar({ data }: { data?: TrustBarData }) {
             {i > 0 && (
               <Separator
                 orientation="vertical"
-                className="absolute left-0 top-1/2 hidden h-12 -translate-y-1/2 bg-gradient-to-b from-transparent via-white/[0.06] to-transparent md:block"
+                className="absolute start-0 top-1/2 hidden h-12 -translate-y-1/2 bg-gradient-to-b from-transparent via-white/[0.06] to-transparent md:block"
               />
             )}
 

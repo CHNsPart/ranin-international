@@ -13,10 +13,17 @@ export async function PUT(request: Request) {
 
   const body = await request.json();
 
+  const data = {
+    ...body,
+    addressAr: body.addressAr ?? "",
+    hoursAr: body.hoursAr ?? "",
+    taglineAr: body.taglineAr ?? "",
+  };
+
   const info = await prisma.companyInfo.upsert({
     where: { id: 1 },
-    update: body,
-    create: { id: 1, ...body },
+    update: data,
+    create: { id: 1, ...data },
   });
 
   revalidatePath("/", "layout");

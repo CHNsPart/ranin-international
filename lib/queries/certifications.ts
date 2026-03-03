@@ -17,14 +17,26 @@ const defaultCertifications: CertificationData[] = [
   { id: 6, title: "Royal Commission", subtitle: "Jubail Licensed", logoUrl: "/certificates/royal-commission-jubail-licensed.svg", sortOrder: 5 },
 ];
 
-export async function getCertifications(): Promise<CertificationData[]> {
+function ar(arVal: string, enVal: string): string {
+  return arVal && arVal.trim() ? arVal : enVal;
+}
+
+export async function getCertifications(locale = "en"): Promise<CertificationData[]> {
   try {
     const dbCerts = await prisma.certification.findMany({
       orderBy: { sortOrder: "asc" },
     });
 
     if (dbCerts.length === 0) return defaultCertifications;
-    return dbCerts;
+
+    const isAr = locale === "ar";
+    return dbCerts.map((c) => ({
+      id: c.id,
+      title: isAr ? ar(c.titleAr, c.title) : c.title,
+      subtitle: isAr ? ar(c.subtitleAr, c.subtitle) : c.subtitle,
+      logoUrl: c.logoUrl,
+      sortOrder: c.sortOrder,
+    }));
   } catch {
     return defaultCertifications;
   }

@@ -24,3 +24,20 @@ export const defaultHero: HeroData = {
     { src: "/images/56.png", label: "Our Team" },
   ],
 };
+
+export const defaultHeroAr: HeroData = {
+  sectionLabel: "منذ 2010 · المملكة العربية السعودية",
+  heading: "نبني المشهد الصناعي للغد",
+  subheading:
+    "تقدم شركة Ranin International خدمات صناعية شاملة — من القوى العاملة والمواد إلى التصنيع والصيانة وما بعدها — لدعم نمو البنية التحتية في المملكة العربية السعودية.",
+  ctaPrimary: { label: "احصل على عرض سعر", href: "/contact" },
+  ctaSecondary: { label: "استكشف خدماتنا", href: "/services" },
+  backgroundImage: "/images/13.png",
+  images: [
+    { src: "/images/14.png", label: "النفط والغاز" },
+    { src: "/images/27.png", label: "البناء" },
+    { src: "/images/41.png", label: "البتروكيماويات" },
+    { src: "/images/54.png", label: "الطاقة" },
+    { src: "/images/56.png", label: "فريقنا" },
+  ],
+};

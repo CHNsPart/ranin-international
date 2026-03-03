@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
 import { motion } from "framer-motion";
 import { ChevronUp, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
@@ -11,14 +12,6 @@ import {
   defaultCompanyInfo,
   type CompanyInfoData,
 } from "@/lib/data/defaults/company-info";
-
-const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
-];
 
 const defaultServiceLinks = [
   { label: "Manpower Services", href: "/services/manpower-services" },
@@ -32,10 +25,21 @@ const defaultServiceLinks = [
 interface FooterProps {
   companyInfo?: CompanyInfoData;
   services?: { slug: string; shortTitle: string }[];
+  locale?: string;
 }
 
 export function Footer({ companyInfo, services }: FooterProps) {
   const info = companyInfo ?? defaultCompanyInfo;
+  const t = useTranslations();
+
+  const quickLinks = [
+    { label: t("nav.home"), href: "/" as const },
+    { label: t("nav.about"), href: "/about" as const },
+    { label: t("nav.services"), href: "/services" as const },
+    { label: t("nav.projects"), href: "/projects" as const },
+    { label: t("nav.contact"), href: "/contact" as const },
+  ];
+
   const serviceLinks = services
     ? services.map((s) => ({ label: s.shortTitle, href: `/services/${s.slug}` }))
     : defaultServiceLinks;
@@ -108,7 +112,7 @@ export function Footer({ companyInfo, services }: FooterProps) {
           <ScrollReveal delay={0.1}>
             <div>
               <h4 className="font-display text-sm tracking-wider text-white">
-                QUICK LINKS
+                {t("footer.quickLinks")}
               </h4>
               <ul className="mt-4 flex flex-col gap-3">
                 {quickLinks.map((link) => (
@@ -129,7 +133,7 @@ export function Footer({ companyInfo, services }: FooterProps) {
           <ScrollReveal delay={0.2}>
             <div>
               <h4 className="font-display text-sm tracking-wider text-white">
-                SERVICES
+                {t("footer.services")}
               </h4>
               <ul className="mt-4 flex flex-col gap-3">
                 {serviceLinks.map((service) => (
@@ -150,7 +154,7 @@ export function Footer({ companyInfo, services }: FooterProps) {
           <ScrollReveal delay={0.3}>
             <div>
               <h4 className="font-display text-sm tracking-wider text-white">
-                CONTACT
+                {t("footer.contact")}
               </h4>
               <ul className="mt-4 flex flex-col gap-4">
                 <li className="flex items-start gap-3">
@@ -187,7 +191,7 @@ export function Footer({ companyInfo, services }: FooterProps) {
 
         <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
           <p className="font-mono text-[10px] tracking-wider text-ranin-steel/60 flex items-center gap-1.5">
-            Developed by
+            {t("footer.developedBy")}
             <a
               href="https://taqneo.com"
               target="_blank"
@@ -203,7 +207,7 @@ export function Footer({ companyInfo, services }: FooterProps) {
               />
               Taqneo
             </a>
-            Software Team
+            {t("footer.softwareTeam")}
             <a href="https://chnspart.com" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabIndex={-1} className="absolute opacity-0 pointer-events-none">chnspart</a>
             <a href="https://oonkoo.com" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabIndex={-1} className="absolute opacity-0 pointer-events-none">oonkoo</a>
           </p>
@@ -212,13 +216,13 @@ export function Footer({ companyInfo, services }: FooterProps) {
               href="/privacy-policy"
               className="font-mono text-[10px] tracking-wider text-ranin-steel/60 transition-colors hover:text-white"
             >
-              Privacy Policy
+              {t("footer.privacyPolicy")}
             </Link>
             <Link
               href="/terms-of-service"
               className="font-mono text-[10px] tracking-wider text-ranin-steel/60 transition-colors hover:text-white"
             >
-              Terms of Service
+              {t("footer.termsOfService")}
             </Link>
           </div>
         </div>
@@ -236,7 +240,7 @@ export function Footer({ companyInfo, services }: FooterProps) {
           size="icon"
           onClick={scrollToTop}
           className="bg-ranin-accent text-white shadow-lg hover:bg-ranin-accent/90"
-          aria-label="Back to top"
+          aria-label={t("common.backToTop")}
         >
           <ChevronUp className="size-5" />
         </Button>

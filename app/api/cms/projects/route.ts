@@ -27,45 +27,82 @@ export async function POST(request: Request) {
     data: {
       slug: body.slug,
       title: body.title,
+      titleAr: body.titleAr ?? "",
       sector: body.sector,
+      sectorAr: body.sectorAr ?? "",
       location: body.location,
+      locationAr: body.locationAr ?? "",
       description: body.description,
+      descriptionAr: body.descriptionAr ?? "",
       longDescription: body.longDescription,
+      longDescriptionAr: body.longDescriptionAr ?? "",
       image: body.image ?? "",
       heroImage: body.heroImage ?? "",
       client: body.client ?? "",
+      clientAr: body.clientAr ?? "",
       year: body.year ?? "",
       duration: body.duration ?? "",
+      durationAr: body.durationAr ?? "",
       status: body.status ?? "Active",
+      statusAr: body.statusAr ?? "",
       sortOrder: body.sortOrder ?? 0,
       highlights: {
-        create: (body.highlights ?? []).map((text: string, i: number) => ({
-          text,
-          sortOrder: i,
-        })),
+        create: (body.highlights ?? []).map(
+          (h: { text: string; textAr?: string }, i: number) => ({
+            text: typeof h === "string" ? h : h.text,
+            textAr: typeof h === "string" ? "" : h.textAr ?? "",
+            sortOrder: i,
+          })
+        ),
       },
       scope: {
         create: (body.scope ?? []).map(
-          (s: { title: string; details: string[] }, i: number) => ({
+          (
+            s: {
+              title: string;
+              titleAr?: string;
+              details: { text: string; textAr?: string }[];
+            },
+            i: number
+          ) => ({
             title: s.title,
+            titleAr: s.titleAr ?? "",
             sortOrder: i,
             details: {
-              create: (s.details ?? []).map((text: string, j: number) => ({
-                text,
-                sortOrder: j,
-              })),
+              create: (s.details ?? []).map(
+                (d: { text: string; textAr?: string }, j: number) => ({
+                  text: typeof d === "string" ? d : d.text,
+                  textAr: typeof d === "string" ? "" : d.textAr ?? "",
+                  sortOrder: j,
+                })
+              ),
             },
           })
         ),
       },
       services: {
-        create: (body.services ?? []).map((name: string) => ({ name })),
+        create: (body.services ?? []).map(
+          (svc: { name: string; nameAr?: string }) => ({
+            name: typeof svc === "string" ? svc : svc.name,
+            nameAr: typeof svc === "string" ? "" : svc.nameAr ?? "",
+          })
+        ),
       },
       blogContent: {
         create: (body.blogContent ?? []).map(
-          (b: { heading: string; body: string }, i: number) => ({
+          (
+            b: {
+              heading: string;
+              headingAr?: string;
+              body: string;
+              bodyAr?: string;
+            },
+            i: number
+          ) => ({
             heading: b.heading,
+            headingAr: b.headingAr ?? "",
             body: b.body,
+            bodyAr: b.bodyAr ?? "",
             sortOrder: i,
           })
         ),
@@ -106,33 +143,62 @@ export async function PUT(request: Request) {
     data: {
       ...data,
       highlights: {
-        create: (highlights ?? []).map((text: string, i: number) => ({
-          text,
-          sortOrder: i,
-        })),
+        create: (highlights ?? []).map(
+          (h: { text: string; textAr?: string }, i: number) => ({
+            text: typeof h === "string" ? h : h.text,
+            textAr: typeof h === "string" ? "" : h.textAr ?? "",
+            sortOrder: i,
+          })
+        ),
       },
       scope: {
         create: (scope ?? []).map(
-          (s: { title: string; details: string[] }, i: number) => ({
+          (
+            s: {
+              title: string;
+              titleAr?: string;
+              details: { text: string; textAr?: string }[];
+            },
+            i: number
+          ) => ({
             title: s.title,
+            titleAr: s.titleAr ?? "",
             sortOrder: i,
             details: {
-              create: (s.details ?? []).map((text: string, j: number) => ({
-                text,
-                sortOrder: j,
-              })),
+              create: (s.details ?? []).map(
+                (d: { text: string; textAr?: string }, j: number) => ({
+                  text: typeof d === "string" ? d : d.text,
+                  textAr: typeof d === "string" ? "" : d.textAr ?? "",
+                  sortOrder: j,
+                })
+              ),
             },
           })
         ),
       },
       services: {
-        create: (services ?? []).map((name: string) => ({ name })),
+        create: (services ?? []).map(
+          (svc: { name: string; nameAr?: string }) => ({
+            name: typeof svc === "string" ? svc : svc.name,
+            nameAr: typeof svc === "string" ? "" : svc.nameAr ?? "",
+          })
+        ),
       },
       blogContent: {
         create: (blogContent ?? []).map(
-          (b: { heading: string; body: string }, i: number) => ({
+          (
+            b: {
+              heading: string;
+              headingAr?: string;
+              body: string;
+              bodyAr?: string;
+            },
+            i: number
+          ) => ({
             heading: b.heading,
+            headingAr: b.headingAr ?? "",
             body: b.body,
+            bodyAr: b.bodyAr ?? "",
             sortOrder: i,
           })
         ),

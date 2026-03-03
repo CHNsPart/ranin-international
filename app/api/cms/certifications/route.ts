@@ -17,7 +17,9 @@ export async function POST(request: Request) {
   const cert = await prisma.certification.create({
     data: {
       title: body.title,
+      titleAr: body.titleAr ?? "",
       subtitle: body.subtitle,
+      subtitleAr: body.subtitleAr ?? "",
       logoUrl: body.logoUrl,
       sortOrder: body.sortOrder ?? 0,
     },
@@ -35,7 +37,11 @@ export async function PUT(request: Request) {
 
   const cert = await prisma.certification.update({
     where: { id },
-    data,
+    data: {
+      ...data,
+      titleAr: body.titleAr ?? "",
+      subtitleAr: body.subtitleAr ?? "",
+    },
   });
 
   revalidatePath("/", "layout");

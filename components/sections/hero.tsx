@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ const Antigravity = dynamic(
 
 /* ── Scroll Indicator ────────────────────────────────────── */
 function ScrollIndicator() {
+  const t = useTranslations();
   return (
     <motion.div
       className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-1.5 lg:bottom-8"
@@ -27,7 +29,7 @@ function ScrollIndicator() {
       transition={{ delay: 3, duration: 0.6 }}
     >
       <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-ranin-steel/60">
-        Scroll
+        {t("hero.scroll")}
       </span>
       <motion.div
         animate={{ y: [0, 6, 0] }}

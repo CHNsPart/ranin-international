@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,13 +45,14 @@ function LogoRow({
 }
 
 export function ClientsProjects({ data }: { data?: ClientsProjectsData }) {
+  const t = useTranslations();
   const d = data ?? defaultClientsProjects;
   return (
     <section className="bg-ranin-light py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* ── Partners Section ────────────────────────────────── */}
         <div className="text-center">
-          <SectionLabel className="text-ranin-accent">Partners</SectionLabel>
+          <SectionLabel className="text-ranin-accent">{t("sections.partners")}</SectionLabel>
           <h2 className="mt-4 font-display text-3xl text-ranin-navy sm:text-4xl md:text-5xl">
             {d.partnersHeading}
           </h2>
@@ -65,7 +67,7 @@ export function ClientsProjects({ data }: { data?: ClientsProjectsData }) {
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-ranin-light to-transparent sm:w-32" />
           <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-ranin-light to-transparent sm:w-32" />
 
-          <div className="flex flex-col gap-8 lg:gap-10">
+          <div dir="ltr" className="flex flex-col gap-8 lg:gap-10">
             <LogoRow logos={d.partnersRow1} />
             <LogoRow logos={d.partnersRow2} reverse />
           </div>
@@ -75,7 +77,7 @@ export function ClientsProjects({ data }: { data?: ClientsProjectsData }) {
       {/* ── Project Highlights ────────────────────────────────── */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mt-24 text-center lg:mt-32">
-          <SectionLabel className="text-ranin-accent">Portfolio</SectionLabel>
+          <SectionLabel className="text-ranin-accent">{t("sections.portfolio")}</SectionLabel>
           <h2 className="mt-4 font-display text-3xl text-ranin-navy sm:text-4xl md:text-5xl">
             {d.portfolioHeading}
           </h2>
@@ -118,7 +120,7 @@ export function ClientsProjects({ data }: { data?: ClientsProjectsData }) {
                     {project.title.toUpperCase()}
                   </h3>
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-white/0 transition-all duration-300 group-hover:text-white/80">
-                    View Project
+                    {t("cta.viewProject")}
                     <ArrowRight className="size-3" />
                   </span>
                 </div>
@@ -133,7 +135,7 @@ export function ClientsProjects({ data }: { data?: ClientsProjectsData }) {
               variant="outline"
               className="group border-ranin-navy/20 text-ranin-navy hover:border-ranin-accent hover:text-ranin-accent"
             >
-              View All Projects
+              {t("cta.viewAllProjects")}
               <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>

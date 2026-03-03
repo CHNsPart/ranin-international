@@ -23,3 +23,21 @@ export const defaultProjectsPage: ProjectsPageData = {
     "Commercial",
   ],
 };
+
+export const defaultProjectsPageAr: ProjectsPageData = {
+  heroImage: "/images/45.png",
+  heroImageAlt: "رافعات صناعية عند غروب الشمس",
+  heroHeading: "مشاريعنا",
+  heroDescription:
+    "سجل حافل بالتميز في أهم المشاريع الصناعية والإنشائية في المملكة العربية السعودية.",
+  sectors: [
+    "الكل",
+    "النفط والغاز",
+    "البتروكيماويات",
+    "البناء",
+    "الطاقة والمرافق",
+    "البنية التحتية",
+    "التصنيع",
+    "تجاري",
+  ],
+};

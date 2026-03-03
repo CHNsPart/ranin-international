@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 import { Button } from "@/components/ui/button";
-import { defaultCTAStrip, type CTAStripData } from "@/lib/data/defaults/cta-strip";
+import { defaultCTAStrip, defaultCTAStripAr, type CTAStripData } from "@/lib/data/defaults/cta-strip";
 
 export function CTAStrip({ data }: { data?: CTAStripData }) {
-  const d = data ?? defaultCTAStrip;
+  const locale = useLocale();
+  const d = data ?? (locale === "ar" ? defaultCTAStripAr : defaultCTAStrip);
   return (
     <section className="relative overflow-hidden bg-ranin-navy">
       {/* ── Image Mosaic Background ─────────────────────────── */}

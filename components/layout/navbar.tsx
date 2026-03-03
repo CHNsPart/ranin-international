@@ -9,27 +9,20 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname, useRouter } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MegaMenu } from "./mega-menu";
 import { ProjectsMegaMenu } from "./projects-mega-menu";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
-];
-
 interface NavbarProps {
   services?: { slug: string; shortTitle: string; heroImage: string; iconName: string }[];
   projects?: { slug: string; title: string; sector: string; image: string }[];
+  locale?: string;
 }
 
-export function Navbar({ services, projects }: NavbarProps) {
+export function Navbar({ services, projects, locale }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -39,6 +32,17 @@ export function Navbar({ services, projects }: NavbarProps) {
   const projectsMegaMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { scrollY } = useScroll();
   const pathname = usePathname();
+  const t = useTranslations();
+  const router = useRouter();
+  const isRTL = locale === "ar";
+
+  const navLinks = [
+    { label: t("nav.home"), href: "/" as const },
+    { label: t("nav.about"), href: "/about" as const },
+    { label: t("nav.services"), href: "/services" as const },
+    { label: t("nav.projects"), href: "/projects" as const },
+    { label: t("nav.contact"), href: "/contact" as const },
+  ];
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 60);
@@ -82,14 +86,20 @@ export function Navbar({ services, projects }: NavbarProps) {
         >
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1.5">
             <span className="font-mono text-[10px] tracking-widest text-white/30">
-              INDUSTRIAL & CONSTRUCTION SERVICES
+              {t("nav.utilityBar")}
             </span>
             <div className="flex items-center gap-4">
               <div className="flex h-6 items-center overflow-hidden border border-white/[0.08] font-mono text-[9px] tracking-wider">
-                <button className="bg-white/[0.07] px-2 py-0.5 text-white transition-colors">
+                <button
+                  onClick={() => router.replace(pathname, { locale: "en" })}
+                  className={`px-2 py-0.5 transition-colors ${locale === "en" ? "bg-white/[0.07] text-white" : "text-white/40 hover:text-white/70"}`}
+                >
                   EN
                 </button>
-                <button className="px-2 py-0.5 text-white/40 transition-colors hover:text-white/70">
+                <button
+                  onClick={() => router.replace(pathname, { locale: "ar" })}
+                  className={`px-2 py-0.5 transition-colors ${locale === "ar" ? "bg-white/[0.07] text-white" : "text-white/40 hover:text-white/70"}`}
+                >
                   AR
                 </button>
               </div>
@@ -115,7 +125,7 @@ export function Navbar({ services, projects }: NavbarProps) {
 
           <nav className="mx-auto flex max-w-7xl items-center px-5 lg:px-6">
             {/* ── Logo — prominent, with dedicated container ── */}
-            <Link href="/" className="group relative shrink-0 py-3 pr-8 lg:py-4">
+            <Link href="/" className="group relative shrink-0 py-3 pe-8 lg:py-4">
               <div>
                 <motion.div
                   variants={{
@@ -135,22 +145,22 @@ export function Navbar({ services, projects }: NavbarProps) {
                   />
                 </motion.div>
               </div>
-              {/* Right divider */}
-              <div className="absolute right-0 top-1/2 hidden h-10 w-px -translate-y-1/2 bg-white/[0.06] lg:block" />
+              {/* End divider */}
+              <div className="absolute end-0 top-1/2 hidden h-10 w-px -translate-y-1/2 bg-white/[0.06] lg:block" />
             </Link>
 
             {/* ── Desktop Nav Links ───────────────────────── */}
             <div
-              className="hidden flex-1 items-center pl-6 lg:flex"
+              className="hidden flex-1 items-center ps-6 lg:flex"
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {navLinks.map((link, i) => {
                 const active = isActive(link.href);
-                const isServices = link.label === "Services";
-                const isProjects = link.label === "Projects";
+                const isServices = link.href === "/services";
+                const isProjects = link.href === "/projects";
                 return (
                   <Link
-                    key={link.label}
+                    key={link.href}
                     href={link.href}
                     className={`relative px-4 py-2.5 text-[13px] font-medium tracking-wide transition-colors duration-200 hover:text-white ${
                       active || (isServices && megaMenuOpen) || (isProjects && projectsMegaMenuOpen)
@@ -188,17 +198,17 @@ export function Navbar({ services, projects }: NavbarProps) {
                 <Button
                   className="group cta-shimmer bg-ranin-accent px-6 py-5 cursor-pointer text-white hover:bg-ranin-accent/90"
                 >
-                  Get a Quote
-                  <ArrowRight className="ml-1.5 size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  {t("nav.getAQuote")}
+                  <ArrowRight className="ms-1.5 size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </Button>
               </Link>
             </div>
 
             {/* ── Mobile Toggle ───────────────────────────── */}
             <button
-              className="relative z-50 ml-auto flex size-10 items-center justify-center lg:hidden"
+              className="relative z-50 ms-auto flex size-10 items-center justify-center lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-label={mobileOpen ? t("common.closeMenu") : t("common.openMenu")}
             >
               <div className="relative flex size-5 flex-col items-center justify-center">
                 <motion.span
@@ -276,15 +286,15 @@ export function Navbar({ services, projects }: NavbarProps) {
                   const active = isActive(link.href);
                   return (
                     <Link
-                      key={link.label}
+                      key={link.href}
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
                     >
                       <motion.div
                         className="group flex items-center gap-5 border-b border-white/[0.06] py-5"
-                        initial={{ opacity: 0, x: -40 }}
+                        initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
+                        exit={{ opacity: 0, x: isRTL ? -20 : 20 }}
                         transition={{
                           delay: 0.15 + i * 0.07,
                           duration: 0.5,
@@ -302,7 +312,7 @@ export function Navbar({ services, projects }: NavbarProps) {
                           {link.label.toUpperCase()}
                         </span>
                         <ArrowRight
-                          className={`ml-auto size-5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-ranin-accent ${
+                          className={`ms-auto size-5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-ranin-accent ${
                             active ? "text-ranin-accent" : "text-white/10"
                           }`}
                         />
@@ -324,18 +334,28 @@ export function Navbar({ services, projects }: NavbarProps) {
                     size="lg"
                     className="group bg-ranin-accent px-8 text-white hover:bg-ranin-accent/90"
                   >
-                    Get a Quote
-                    <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-0.5" />
+                    {t("nav.getAQuote")}
+                    <ArrowRight className="ms-2 size-4 transition-transform group-hover:translate-x-0.5" />
                   </Button>
                 </Link>
                 <div className="flex h-9 items-center overflow-hidden border border-white/[0.08] font-mono text-xs tracking-wider">
-                  <button className="bg-white/[0.07] px-3 py-2 text-white">EN</button>
-                  <button className="px-3 py-2 text-white/40">AR</button>
+                  <button
+                    onClick={() => { router.replace(pathname, { locale: "en" }); setMobileOpen(false); }}
+                    className={`px-3 py-2 transition-colors ${locale === "en" ? "bg-white/[0.07] text-white" : "text-white/40"}`}
+                  >
+                    EN
+                  </button>
+                  <button
+                    onClick={() => { router.replace(pathname, { locale: "ar" }); setMobileOpen(false); }}
+                    className={`px-3 py-2 transition-colors ${locale === "ar" ? "bg-white/[0.07] text-white" : "text-white/40"}`}
+                  >
+                    AR
+                  </button>
                 </div>
               </motion.div>
 
               {/* Decorative corner accent */}
-              <div className="pointer-events-none absolute bottom-8 right-8 size-24 border-b border-r border-ranin-accent/10" />
+              <div className="pointer-events-none absolute bottom-8 end-8 size-24 border-b border-e border-ranin-accent/10" />
             </div>
           </motion.div>
         )}

@@ -13,9 +13,13 @@ model Service {
   id              Int                   @id @default(autoincrement())
   slug            String                @unique
   title           String
+  titleAr         String                @default("")
   shortTitle      String
+  shortTitleAr    String                @default("")
   description     String
+  descriptionAr   String                @default("")
   longDescription String
+  longDescriptionAr String              @default("")
   iconName        String
   heroImage       String
   sortOrder       Int                   @default(0)
@@ -29,6 +33,7 @@ model Service {
 model ServiceFeature {
   id        Int     @id @default(autoincrement())
   text      String
+  textAr    String  @default("")
   sortOrder Int     @default(0)
   serviceId Int
   service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
@@ -37,6 +42,7 @@ model ServiceFeature {
 model ServiceFeatureGroup {
   id        Int                         @id @default(autoincrement())
   title     String
+  titleAr   String                      @default("")
   sortOrder Int                         @default(0)
   serviceId Int
   service   Service                     @relation(fields: [serviceId], references: [id], onDelete: Cascade)
@@ -46,6 +52,7 @@ model ServiceFeatureGroup {
 model ServiceFeatureGroupDetail {
   id             Int                 @id @default(autoincrement())
   text           String
+  textAr         String              @default("")
   sortOrder      Int                 @default(0)
   featureGroupId Int
   featureGroup   ServiceFeatureGroup @relation(fields: [featureGroupId], references: [id], onDelete: Cascade)
@@ -63,16 +70,24 @@ model Project {
   id              Int                   @id @default(autoincrement())
   slug            String                @unique
   title           String
+  titleAr         String                @default("")
   sector          String
+  sectorAr        String                @default("")
   location        String
+  locationAr      String                @default("")
   description     String
+  descriptionAr   String                @default("")
   longDescription String
+  longDescriptionAr String              @default("")
   image           String
   heroImage       String
   client          String
+  clientAr        String                @default("")
   year            String
   duration        String
+  durationAr      String                @default("")
   status          String
+  statusAr        String                @default("")
   sortOrder       Int                   @default(0)
   highlights      ProjectHighlight[]
   scope           ProjectScope[]
@@ -85,7 +100,9 @@ model Project {
 model ProjectBlogContent {
   id        Int     @id @default(autoincrement())
   heading   String
+  headingAr String  @default("")
   body      String
+  bodyAr    String  @default("")
   sortOrder Int     @default(0)
   projectId Int
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
@@ -94,6 +111,7 @@ model ProjectBlogContent {
 model ProjectHighlight {
   id        Int     @id @default(autoincrement())
   text      String
+  textAr    String  @default("")
   sortOrder Int     @default(0)
   projectId Int
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
@@ -102,6 +120,7 @@ model ProjectHighlight {
 model ProjectScope {
   id        Int                  @id @default(autoincrement())
   title     String
+  titleAr   String               @default("")
   sortOrder Int                  @default(0)
   projectId Int
   project   Project              @relation(fields: [projectId], references: [id], onDelete: Cascade)
@@ -111,6 +130,7 @@ model ProjectScope {
 model ProjectScopeDetail {
   id        Int          @id @default(autoincrement())
   text      String
+  textAr    String       @default("")
   sortOrder Int          @default(0)
   scopeId   Int
   scope     ProjectScope @relation(fields: [scopeId], references: [id], onDelete: Cascade)
@@ -119,6 +139,7 @@ model ProjectScopeDetail {
 model ProjectService {
   id        Int     @id @default(autoincrement())
   name      String
+  nameAr    String  @default("")
   projectId Int
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
@@ -126,6 +147,7 @@ model ProjectService {
 model Partner {
   id        Int    @id @default(autoincrement())
   name      String
+  nameAr    String @default("")
   logoUrl   String
   row       Int    @default(1)
   sortOrder Int    @default(0)
@@ -134,7 +156,9 @@ model Partner {
 model Certification {
   id        Int    @id @default(autoincrement())
   title     String
+  titleAr   String @default("")
   subtitle  String
+  subtitleAr String @default("")
   logoUrl   String
   sortOrder Int    @default(0)
 }
@@ -142,11 +166,14 @@ model Certification {
 model CompanyInfo {
   id          Int    @id @default(1)
   address     String @default("")
+  addressAr   String @default("")
   phone       String @default("")
   email       String @default("")
   hours       String @default("")
+  hoursAr     String @default("")
   mapEmbedUrl String @default("")
   tagline     String @default("")
+  taglineAr   String @default("")
   logoUrl     String @default("")
 }
 

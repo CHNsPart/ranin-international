@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { SectionLabel } from "@/components/shared/section-label";
 import { defaultCertifications, type CertificationData } from "@/lib/queries/certifications";
@@ -42,6 +43,7 @@ function CertRow({ reverse = false, certs }: { reverse?: boolean; certs: Certifi
 }
 
 export function Certifications({ certifications }: { certifications?: CertificationData[] }) {
+  const t = useTranslations();
   const certs = certifications ?? defaultCertifications;
   return (
     <section className="relative overflow-hidden bg-ranin-navy py-24 lg:py-32">
@@ -72,13 +74,12 @@ export function Certifications({ certifications }: { certifications?: Certificat
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="text-center">
-          <SectionLabel>Accreditations</SectionLabel>
+          <SectionLabel>{t("certifications.accreditations")}</SectionLabel>
           <h2 className="mt-4 font-display text-4xl text-white md:text-5xl lg:text-6xl">
-            CERTIFIED EXCELLENCE
+            {t("certifications.certifiedExcellence")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-ranin-steel">
-            Our operations meet the highest international standards — recognized
-            by the Kingdom&apos;s most trusted regulatory and industry bodies.
+            {t("certifications.certifiedDescription")}
           </p>
         </div>
       </div>
@@ -89,7 +90,7 @@ export function Certifications({ certifications }: { certifications?: Certificat
         <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-ranin-navy to-transparent sm:w-32" />
         <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-ranin-navy to-transparent sm:w-32" />
 
-        <div className="flex flex-col gap-6">
+        <div dir="ltr" className="flex flex-col gap-6">
           <CertRow certs={certs} />
           <CertRow certs={certs} reverse />
         </div>
@@ -107,14 +108,12 @@ export function Certifications({ certifications }: { certifications?: Certificat
           <div className="flex items-center gap-3">
             <div className="h-px w-8 bg-ranin-accent/40" />
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ranin-accent">
-              Trusted &amp; Verified
+              {t("certifications.trustedVerified")}
             </span>
             <div className="h-px w-8 bg-ranin-accent/40" />
           </div>
           <p className="max-w-lg text-sm text-ranin-steel">
-            Every project we deliver is backed by internationally recognized
-            certifications, ensuring quality, safety, and environmental
-            compliance at every stage.
+            {t("certifications.trustedDescription")}
           </p>
         </motion.div>
       </div>

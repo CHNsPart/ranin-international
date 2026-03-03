@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "getAQuote": "Get a Quote",
+    "utilityBar": "INDUSTRIAL & CONSTRUCTION SERVICES"
+  },
+  "footer": {
+    "quickLinks": "QUICK LINKS",
+    "services": "SERVICES",
+    "contact": "CONTACT",
+    "developedBy": "Developed by",
+    "softwareTeam": "Software Team",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "hero": {
+    "scroll": "Scroll"
+  },
+  "sections": {
+    "whatWeDo": "What We Do",
+    "partners": "Partners",
+    "portfolio": "Portfolio",
+    "accreditations": "Accreditations",
+    "ourServices": "OUR SERVICES",
+    "certifiedExcellence": "CERTIFIED EXCELLENCE",
+    "certifiedDescription": "Our operations meet the highest international standards — recognized by the Kingdom's most trusted regulatory and industry bodies.",
+    "ourOffice": "OUR OFFICE",
+    "location": "Location",
+    "officeDescription": "Visit us at our headquarters in Jubail Industrial City — the heart of Saudi Arabia's industrial zone.",
+    "trustedVerified": "Trusted & Verified",
+    "trustedDescription": "Every project we deliver is backed by internationally recognized certifications, ensuring quality, safety, and environmental compliance at every stage."
+  },
+  "cta": {
+    "learnMore": "Learn More",
+    "viewProject": "View Project",
+    "viewAllProjects": "View All Projects",
+    "viewAll": "View All"
+  },
+  "services": {
+    "allServices": "All Services",
+    "overview": "Overview",
+    "whatWeDeliver": "WHAT WE DELIVER",
+    "requestAQuote": "Request a Quote",
+    "capabilities": "Capabilities",
+    "keyFeatures": "KEY FEATURES",
+    "gallery": "Gallery",
+    "projectGallery": "PROJECT GALLERY",
+    "previous": "Previous",
+    "next": "Next",
+    "servicePrefix": "Service"
+  },
+  "projects": {
+    "allProjects": "All Projects",
+    "client": "Client",
+    "year": "Year",
+    "duration": "Duration",
+    "status": "Status",
+    "projectOverview": "PROJECT OVERVIEW",
+    "keyDetails": "KEY DETAILS",
+    "highlights": "HIGHLIGHTS",
+    "projectInsights": "PROJECT INSIGHTS",
+    "insightsDescription": "A detailed look at the challenges, methods, and outcomes that defined this project",
+    "scopeOfWork": "SCOPE OF WORK",
+    "comprehensiveDelivery": "Comprehensive delivery across all project phases",
+    "overview": "Overview",
+    "details": "Details",
+    "insights": "Insights",
+    "scope": "Scope",
+    "discussProject": "Discuss Your Project",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "contact": {
+    "getInTouch": "Get in Touch",
+    "reachOut": "Reach Out",
+    "howToFindUs": "HOW TO FIND US",
+    "officeAddress": "Office Address",
+    "phone": "Phone",
+    "email": "Email",
+    "callNow": "Call Now",
+    "sendEmail": "Send Email",
+    "findUs": "FIND US",
+    "contactDescription": "Whether you need manpower, materials, or maintenance — we're here to help. Reach out through any of the channels below.",
+    "addressAccent": "Visit our headquarters in the heart of Saudi Arabia's industrial zone.",
+    "phoneAccent": "Speak directly with our team — we're available Sunday through Thursday.",
+    "emailAccent": "Send us your inquiry and we'll respond within 24 hours."
+  },
+  "about": {
+    "aboutUs": "About Us",
+    "ourStory": "Our Story",
+    "ourValues": "Our Values",
+    "ourJourney": "Our Journey",
+    "exploreOurServices": "Explore Our Services",
+    "downloadCompanyProfile": "Download Company Profile",
+    "milestones": "Milestones"
+  },
+  "certifications": {
+    "accreditations": "Accreditations",
+    "certifiedExcellence": "CERTIFIED EXCELLENCE",
+    "certifiedDescription": "Our operations meet the highest international standards — recognized by the Kingdom's most trusted regulatory and industry bodies.",
+    "trustedVerified": "Trusted & Verified",
+    "trustedDescription": "Every project we deliver is backed by internationally recognized certifications, ensuring quality, safety, and environmental compliance at every stage."
+  },
+  "legal": {
+    "legal": "Legal",
+    "lastUpdated": "Last updated: February 23, 2026"
+  },
+  "common": {
+    "backToTop": "Back to top",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "servicePrefix": "Service",
+    "ourServices": "Our Services",
+    "ourProjects": "Our Projects"
+  }
+}

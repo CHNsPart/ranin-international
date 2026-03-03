@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { services as defaultServices } from "@/lib/data/services";
 import { getIcon } from "@/lib/data/icons";
@@ -14,6 +15,7 @@ interface MegaMenuProps {
 }
 
 export function MegaMenu({ onMouseEnter, onMouseLeave, services }: MegaMenuProps) {
+  const t = useTranslations();
   const items = services ?? defaultServices;
   return (
     <motion.div
@@ -36,13 +38,13 @@ export function MegaMenu({ onMouseEnter, onMouseLeave, services }: MegaMenuProps
           {/* Header row */}
           <div className="mb-4 flex items-center justify-between">
             <p className="text-[11px] font-medium uppercase tracking-widest text-white/30">
-              Our Services
+              {t("common.ourServices")}
             </p>
             <Link
               href="/services"
               className="group flex items-center gap-1.5 text-[12px] font-medium text-ranin-accent transition-colors hover:text-white"
             >
-              View All
+              {t("cta.viewAll")}
               <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>

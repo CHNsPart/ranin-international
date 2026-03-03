@@ -17,6 +17,7 @@ export async function POST(request: Request) {
   const partner = await prisma.partner.create({
     data: {
       name: body.name,
+      nameAr: body.nameAr ?? "",
       logoUrl: body.logoUrl,
       row: body.row ?? 1,
       sortOrder: body.sortOrder ?? 0,
@@ -35,7 +36,10 @@ export async function PUT(request: Request) {
 
   const partner = await prisma.partner.update({
     where: { id },
-    data,
+    data: {
+      ...data,
+      nameAr: body.nameAr ?? "",
+    },
   });
 
   revalidatePath("/", "layout");

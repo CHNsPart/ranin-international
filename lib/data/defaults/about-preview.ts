@@ -47,3 +47,36 @@ export const defaultAboutPreview: AboutPreviewData = {
     },
   ],
 };
+
+export const defaultAboutPreviewAr: AboutPreviewData = {
+  sectionLabel: "من نحن",
+  heading: "شريككم الصناعي الموثوق منذ 2010",
+  paragraphs: [
+    "شركة Ranin International هي شركة خدمات صناعية متنوعة يقع مقرها الرئيسي في المملكة العربية السعودية. على مدار أكثر من 15 عامًا، قدمنا حلول القوى العاملة والمواد والتصنيع والصيانة الحيوية لأكثر القطاعات تطلبًا في المنطقة.",
+    "إن التزامنا بالتميز التشغيلي والسلامة والنزاهة جعلنا شريكًا موثوقًا لكبار مقاولي الهندسة والمشتريات والبناء ومشغلي النفط والغاز والجهات الحكومية في جميع أنحاء المملكة.",
+  ],
+  linkText: "من نحن",
+  linkHref: "/about",
+  image: "/images/47.png",
+  imageAlt: "عامل شركة Ranin International في منشأة صناعية",
+  values: [
+    {
+      iconName: "ShieldCheck",
+      title: "السلامة أولاً",
+      description:
+        "ثقافة سلامة لا تقبل المساومة في كل موقع مشروع وعملية.",
+    },
+    {
+      iconName: "Handshake",
+      title: "النزاهة",
+      description:
+        "شراكات شفافة مبنية على الثقة والمسؤولية والتواصل الصادق.",
+    },
+    {
+      iconName: "Award",
+      title: "التميز",
+      description:
+        "سعي دؤوب نحو الجودة في كل ما نقدمه، من القوى العاملة إلى المواد.",
+    },
+  ],
+};

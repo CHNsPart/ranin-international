@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +20,7 @@ interface ServiceShowcaseItem {
 }
 
 export function ServicesShowcase({ services: servicesProp }: { services?: ServiceShowcaseItem[] }) {
+  const t = useTranslations();
   const services = servicesProp ?? defaultServicesList.map(s => ({ id: s.id, slug: s.slug, title: s.title, description: s.description, images: s.images }));
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -39,6 +41,7 @@ export function ServicesShowcase({ services: servicesProp }: { services?: Servic
         const progress = progressRef.current;
         if (!wrapper || !container) return;
 
+        const isRTL = document.documentElement.dir === "rtl";
         const scrollAmount = wrapper.scrollWidth - container.offsetWidth;
 
         const tl = gsap.timeline({
@@ -52,7 +55,7 @@ export function ServicesShowcase({ services: servicesProp }: { services?: Servic
           },
         });
 
-        tl.to(wrapper, { x: -scrollAmount, ease: "none" }, 0);
+        tl.to(wrapper, { x: isRTL ? scrollAmount : -scrollAmount, ease: "none" }, 0);
         if (progress) {
           tl.to(progress, { scaleX: 1, ease: "none" }, 0);
         }
@@ -66,9 +69,9 @@ export function ServicesShowcase({ services: servicesProp }: { services?: Servic
       {/* Section header */}
       <div className="px-6 pt-24 pb-10 lg:pt-32 lg:pb-16">
         <div className="mx-auto max-w-7xl">
-          <SectionLabel>What We Do</SectionLabel>
+          <SectionLabel>{t("sections.whatWeDo")}</SectionLabel>
           <h2 className="mt-4 font-display text-4xl text-white md:text-5xl lg:text-6xl">
-            OUR SERVICES
+            {t("sections.ourServices")}
           </h2>
         </div>
       </div>
@@ -104,8 +107,8 @@ export function ServicesShowcase({ services: servicesProp }: { services?: Servic
                 href={`/services/${service.slug}`}
                 className="group mt-8 inline-flex w-fit items-center text-sm text-white/70 transition-colors hover:text-white"
               >
-                Learn More
-                <ArrowRight className="ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                {t("cta.learnMore")}
+                <ArrowRight className="ms-2 size-4 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </Link>
             </div>
 
@@ -155,7 +158,7 @@ export function ServicesShowcase({ services: servicesProp }: { services?: Servic
         <div className="mx-auto h-[2px] max-w-7xl bg-white/[0.04]">
           <div
             ref={progressRef}
-            className="h-full origin-left scale-x-0 bg-ranin-accent/60"
+            className="h-full origin-left scale-x-0 bg-ranin-accent/60 rtl:origin-right"
           />
         </div>
       </div>
@@ -218,8 +221,8 @@ export function ServicesShowcase({ services: servicesProp }: { services?: Servic
                 href={`/services/${service.slug}`}
                 className="group/btn mt-4 inline-flex items-center text-sm text-white/70 transition-colors hover:text-white"
               >
-                Learn More
-                <ArrowRight className="ml-2 size-4 transition-transform group-hover/btn:translate-x-1" />
+                {t("cta.learnMore")}
+                <ArrowRight className="ms-2 size-4 transition-transform group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1" />
               </Link>
             </div>
           </motion.div>

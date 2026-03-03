@@ -1,13 +1,20 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { SectionLabel } from "@/components/shared/section-label";
 import { defaultCompanyInfo, type CompanyInfoData } from "@/lib/data/defaults/company-info";
 import { SubtlePatternBg } from "@/components/shared/subtle-pattern-bg";
 
-export function GoogleMap({ companyInfo }: { companyInfo?: CompanyInfoData }) {
+export function GoogleMap({ companyInfo, locale = "en" }: { companyInfo?: CompanyInfoData; locale?: string }) {
+  const t = useTranslations();
   const info = companyInfo ?? defaultCompanyInfo;
+
+  // Swap Google Maps language parameter for Arabic locale
+  const mapUrl = locale === "ar"
+    ? info.mapEmbedUrl.replace(/1sen/g, "1sar").replace(/2sen/g, "2sar")
+    : info.mapEmbedUrl;
   return (
     <section className="relative overflow-hidden bg-ranin-light py-24 lg:py-32">
       <SubtlePatternBg src="/images/30.png" opacity={0.09} />
@@ -20,13 +27,12 @@ export function GoogleMap({ companyInfo }: { companyInfo?: CompanyInfoData }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <SectionLabel className="text-ranin-accent">Location</SectionLabel>
+            <SectionLabel className="text-ranin-accent">{t("sections.location")}</SectionLabel>
             <h2 className="mt-4 font-display text-3xl text-ranin-navy sm:text-4xl md:text-5xl">
-              OUR OFFICE
+              {t("sections.ourOffice")}
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-ranin-steel">
-              Visit us at our headquarters in Jubail Industrial City — the heart
-              of Saudi Arabia&apos;s industrial zone.
+              {t("sections.officeDescription")}
             </p>
 
             <div className="mt-8 flex flex-col gap-5">
@@ -67,7 +73,7 @@ export function GoogleMap({ companyInfo }: { companyInfo?: CompanyInfoData }) {
           >
             <div className="overflow-hidden border border-ranin-navy/[0.06]">
               <iframe
-                src={info.mapEmbedUrl}
+                src={mapUrl}
                 width="100%"
                 height="400"
                 style={{

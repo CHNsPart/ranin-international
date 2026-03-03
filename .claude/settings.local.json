@@ -4,7 +4,12 @@
       "mcp__ide__getDiagnostics",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "Bash(cd \"C:/_code/Clients/ranin\" && npx prisma generate 2>&1)"
+      "Bash(cd \"C:/_code/Clients/ranin\" && npx prisma generate 2>&1)",
+      "Bash(npx tsc:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(npx next:*)",
+      "Bash(rm:*)"
     ]
   }
 }

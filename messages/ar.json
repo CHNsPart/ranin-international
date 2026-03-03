@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "services": "خدماتنا",
+    "projects": "مشاريعنا",
+    "contact": "اتصل بنا",
+    "getAQuote": "طلب عرض سعر",
+    "utilityBar": "خدمات صناعية وإنشائية"
+  },
+  "footer": {
+    "quickLinks": "روابط سريعة",
+    "services": "الخدمات",
+    "contact": "التواصل",
+    "developedBy": "تطوير",
+    "softwareTeam": "فريق البرمجيات",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة"
+  },
+  "hero": {
+    "scroll": "تمرير"
+  },
+  "sections": {
+    "whatWeDo": "ما نقوم به",
+    "partners": "شركاؤنا",
+    "portfolio": "أعمالنا",
+    "accreditations": "الاعتمادات",
+    "ourServices": "خدماتنا",
+    "certifiedExcellence": "التميز المعتمد",
+    "certifiedDescription": "تلتزم عملياتنا بأعلى المعايير الدولية — معترف بها من قبل أكثر الجهات التنظيمية والصناعية موثوقية في المملكة.",
+    "ourOffice": "مكتبنا",
+    "location": "الموقع",
+    "officeDescription": "زوروا مقرنا الرئيسي في مدينة الجبيل الصناعية — قلب المنطقة الصناعية في المملكة العربية السعودية.",
+    "trustedVerified": "موثوق ومعتمد",
+    "trustedDescription": "كل مشروع ننفذه مدعوم بشهادات معترف بها دولياً، مما يضمن الجودة والسلامة والامتثال البيئي في كل مرحلة."
+  },
+  "cta": {
+    "learnMore": "اقرأ المزيد",
+    "viewProject": "عرض المشروع",
+    "viewAllProjects": "عرض جميع المشاريع",
+    "viewAll": "عرض الكل"
+  },
+  "services": {
+    "allServices": "جميع الخدمات",
+    "overview": "نظرة عامة",
+    "whatWeDeliver": "ما نقدمه",
+    "requestAQuote": "طلب عرض سعر",
+    "capabilities": "القدرات",
+    "keyFeatures": "المميزات الرئيسية",
+    "gallery": "المعرض",
+    "projectGallery": "معرض المشاريع",
+    "previous": "السابق",
+    "next": "التالي",
+    "servicePrefix": "خدمة"
+  },
+  "projects": {
+    "allProjects": "جميع المشاريع",
+    "client": "العميل",
+    "year": "السنة",
+    "duration": "المدة",
+    "status": "الحالة",
+    "projectOverview": "نظرة عامة على المشروع",
+    "keyDetails": "التفاصيل الرئيسية",
+    "highlights": "أبرز النقاط",
+    "projectInsights": "رؤى المشروع",
+    "insightsDescription": "نظرة تفصيلية على التحديات والأساليب والنتائج التي حددت هذا المشروع",
+    "scopeOfWork": "نطاق العمل",
+    "comprehensiveDelivery": "تسليم شامل عبر جميع مراحل المشروع",
+    "overview": "نظرة عامة",
+    "details": "التفاصيل",
+    "insights": "الرؤى",
+    "scope": "النطاق",
+    "discussProject": "ناقش مشروعك",
+    "previous": "السابق",
+    "next": "التالي"
+  },
+  "contact": {
+    "getInTouch": "تواصل معنا",
+    "reachOut": "تواصل معنا",
+    "howToFindUs": "كيف تجدنا",
+    "officeAddress": "عنوان المكتب",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "callNow": "اتصل الآن",
+    "sendEmail": "أرسل بريداً إلكترونياً",
+    "findUs": "موقعنا",
+    "contactDescription": "سواء كنت بحاجة إلى قوى عاملة أو مواد أو صيانة — نحن هنا لمساعدتك. تواصل معنا عبر أي من القنوات أدناه.",
+    "addressAccent": "زوروا مقرنا الرئيسي في قلب المنطقة الصناعية في المملكة العربية السعودية.",
+    "phoneAccent": "تحدث مباشرة مع فريقنا — نحن متاحون من الأحد إلى الخميس.",
+    "emailAccent": "أرسل استفسارك وسنرد خلال 24 ساعة."
+  },
+  "about": {
+    "aboutUs": "من نحن",
+    "ourStory": "قصتنا",
+    "ourValues": "قيمنا",
+    "ourJourney": "مسيرتنا",
+    "exploreOurServices": "استكشف خدماتنا",
+    "downloadCompanyProfile": "تحميل ملف الشركة",
+    "milestones": "المحطات البارزة"
+  },
+  "certifications": {
+    "accreditations": "الاعتمادات",
+    "certifiedExcellence": "التميز المعتمد",
+    "certifiedDescription": "تلتزم عملياتنا بأعلى المعايير الدولية — معترف بها من قبل أكثر الجهات التنظيمية والصناعية موثوقية في المملكة.",
+    "trustedVerified": "موثوق ومعتمد",
+    "trustedDescription": "كل مشروع ننفذه مدعوم بشهادات معترف بها دولياً، مما يضمن الجودة والسلامة والامتثال البيئي في كل مرحلة."
+  },
+  "legal": {
+    "legal": "قانوني",
+    "lastUpdated": "آخر تحديث: 23 فبراير 2026"
+  },
+  "common": {
+    "backToTop": "العودة للأعلى",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "servicePrefix": "خدمة",
+    "ourServices": "خدماتنا",
+    "ourProjects": "مشاريعنا"
+  }
+}
